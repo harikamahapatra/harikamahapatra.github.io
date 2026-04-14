@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>The Latent Truth</title>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    :root {
+      --blue: #1255b2;
+      --text: #444;
+      --bold: #000;
+      --border: #eee;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+      max-width: 840px;
+      margin: auto;
+      padding: 60px 20px;
+      background: #fff;
+    }
+
+    header {
+      margin-bottom: 40px;
+      border-bottom: 2px solid var(--bold);
+      padding-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: var(--bold);
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      color: #555;
+      font-style: italic;
+      margin-bottom: 12px;
+    }
+
+    .authors {
+      font-size: 14px;
+      color: var(--bold);
+      margin-bottom: 6px;
+    }
+
+    .venue {
+      font-size: 13px;
+      color: #777;
+      margin-bottom: 10px;
+    }
+
+    .links {
+      margin-top: 10px;
+    }
+
+    .links a {
+      margin-right: 12px;
+      color: var(--blue);
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+
+    .teaser {
+      margin: 30px 0;
+      text-align: center;
+    }
+
+    .teaser img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .caption {
+      font-size: 13px;
+      color: #666;
+      margin-top: 10px;
+    }
+
+    .row {
+      display: flex;
+      padding: 35px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .label {
+      flex: 0 0 180px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--bold);
+      padding-top: 4px;
+    }
+
+    .content {
+      flex: 1;
+      font-size: 15px;
+    }
+
+    ul {
+      padding-left: 18px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 600px) {
+      .row {
+        flex-direction: column;
+      }
+      .label {
+        margin-bottom: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>The Latent Truth: Knowledge–Behavior Gap in Logical Deduction via Activation Steering</h1>
+
+  <div class="subtitle">
+    Aligning model outputs with latent reasoning representations
+  </div>
+
+  <div class="authors">
+    Harika Mahapatra, Vinayak Raj Urs
+  </div>
+
+  <div class="venue">
+    Preprint
+  </div>
+
+  <div class="links">
+    <a href="#" style="pointer-events:none; opacity:0.5;">Code (WIP)</a>
+    <a href="The_Latent_Truth__Investigating_the_Knowledge_Behavior_Gap_in_Logical_Deduction_via_Activation_Steering.pdf">Paper</a>
+  </div>
+</header>
+
+<div class="teaser">
+  <img src="images/teaser.png">
+  <div class="caption">
+    Language models often encode correct reasoning internally but fail to express it during generation. Activation steering aligns outputs with latent representations, recovering correct logical deductions without modifying model weights.
+  </div>
+</div>
+
+<div class="row">
+  <div class="label">The Core Idea</div>
+  <div class="content">
+    Large language models frequently contain correct reasoning internally but fail to express it during generation. This discrepancy reveals a gap between what models know and what they produce. Rather than treating failures as missing knowledge, we investigate how reasoning is represented internally and where it breaks during decoding.
+  </div>
+</div>
+
+<div class="row">
+  <div class="label">Key Insight</div>
+  <div class="content">
+    We find that models often encode correct logical structure in intermediate activations, but this structure is not faithfully reflected in the final output. This suggests that many failures arise from the generation process itself rather than limitations in representation.
+  </div>
+</div>
+
+<div class="row">
+  <div class="label">Key Ideas</div>
+  <div class="content">
+    <ul>
+      <li>Correct reasoning is often present in intermediate representations</li>
+      <li>Failures emerge during decoding rather than knowledge formation</li>
+      <li>Targeted activation interventions can recover correct outputs</li>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="label">Method</div>
+  <div class="content">
+    We probe intermediate activations across layers to identify signals corresponding to correct reasoning. Using these signals, we apply activation steering during generation, guiding the model toward outputs that better align with its latent structure.
+
+    <br><br>
+
+    This approach operates entirely at inference time and does not require retraining, fine-tuning, or modification of model weights. It provides a lightweight and general mechanism for improving reasoning consistency across tasks.
+  </div>
+</div>
+
+<div class="row">
+  <div class="label">Results</div>
+  <div class="content">
+    Activation steering recovers a significant portion of logical failures while preserving fluency and coherence. Our findings suggest that model errors often stem from misaligned decoding rather than insufficient knowledge, highlighting a new direction for improving reliability in language models.
+  </div>
+</div>
+
+<div style="text-align:center; font-size:12px; color:#777; margin-top:25px;">
+  This project is ongoing. Results and write-up may evolve.
+</div>
+
+</body>
+</html>

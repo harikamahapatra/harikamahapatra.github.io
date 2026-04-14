@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Queue</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      max-width: 600px;
+      margin: 100px auto;
+      text-align: center;
+      line-height: 1.6;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin: 8px 0;
+      font-size: 14px;
+    }
+    button {
+      padding: 6px 12px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Add something to the queue</h2>
+
+  <form id="form">
+    <input type="text" id="song" placeholder="Song / Artist" required />
+    <input type="text" id="link" placeholder="Spotify link (optional)" />
+    <button type="submit">Add</button>
+  </form>
+
+  <p id="status"></p>
+
+  <p style="font-size: 12px; color: gray; margin-top: 20px;">
+    trust me — this is going into a database
+  </p>
+
+  <p style="font-size: 12px; color: gray; margin-top: 30px;">
+    recent additions
+  </p>
+
+  <div id="list"></div>
+
+  <script>
+    const client = supabase.createClient(
+      "https://rxwpjjbinjceryrqqcln.supabase.co",
+      "sb_publishable_AKwPnMroLMIz4HvQMDxmBw_VGBwI7pZ"
+    );
+
+    async function loadSongs() {
+      const { data, error } = await client
+        .from("queue")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+      if (error) return;
+
+      const seen = new Set();
+      const unique = data.filter(item => {
+        const key = item.song.trim().toLowerCase();
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      }).slice(0, 5);
+
+      document.getElementById("list").innerHTML = unique.map(item => `
+        <div style="margin: 8px 0;">
+          ${item.link && item.link.startsWith("http")
+            ? `<a href="${item.link}" target="_blank">${item.song}</a>`
+            : item.song}
+        </div>
+      `).join("");
+    }
+
+    document.getElementById("form").onsubmit = async (e) => {
+      e.preventDefault();
+
+      const song = document.getElementById("song").value;
+      const link = document.getElementById("link").value;
+
+      const { error } = await client
+        .from("queue")
+        .insert([{ song, link }]);
+
+      const status = document.getElementById("status");
+
+      if (error) {
+        status.innerText = "Error: " + error.message;
+      } else {
+        status.innerText = "Added :)";
+        e.target.reset();
+        loadSongs();
+      }
+    };
+
+    loadSongs();
+  </script>
+
+</body>
+</html>

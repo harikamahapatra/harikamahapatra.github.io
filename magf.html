@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CV-Attention Research — Harika Mahapatra</title>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<style>
+:root {
+  --barron-blue: #1255b2;
+  --text-main: #444;
+  --text-bold: #000;
+  --border: #eeeeee;
+}
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  color: var(--text-main);
+  line-height: 1.6;
+  max-width: 840px;
+  margin: auto;
+  padding: 60px 20px;
+  background-color: #ffffff;
+}
+
+/* Header */
+header {
+  margin-bottom: 30px;
+  border-bottom: 2px solid var(--text-bold);
+  padding-bottom: 20px;
+}
+
+h1 {
+  font-size: 28px;
+  color: var(--text-bold);
+  margin: 0 0 5px 0;
+  letter-spacing: -0.5px;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: var(--text-main);
+  margin-bottom: 15px;
+  font-style: italic;
+}
+
+.authors {
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: var(--text-bold);
+}
+
+.venue {
+  font-size: 13px;
+  color: #777;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+.links {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.links a {
+  color: var(--barron-blue);
+  text-decoration: none;
+}
+
+.links a:hover {
+  text-decoration: underline;
+}
+
+.dot {
+  margin: 0 8px;
+  color: #ccc;
+}
+
+/* Teaser */
+.teaser-box {
+  background: #fafafa;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 25px;
+  margin: 30px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  gap: 12px;
+}
+
+.flow-step {
+  padding: 10px;
+  border: 1.5px solid var(--text-bold);
+  background: white;
+  min-width: 110px;
+}
+
+.arrow {
+  font-size: 18px;
+  color: #aaa;
+}
+
+/* Grid */
+.grid-row {
+  display: flex;
+  padding: 35px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.label {
+  flex: 0 0 180px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-bold);
+  letter-spacing: 1.2px;
+  padding-top: 5px;
+}
+
+.content {
+  flex: 1;
+  font-size: 15px;
+}
+
+/* Components */
+.math-block {
+  padding: 15px 0;
+  text-align: center;
+  font-size: 18px;
+  color: var(--text-bold);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 14px;
+}
+
+th {
+  text-align: left;
+  border-bottom: 1.5px solid var(--text-bold);
+  padding-bottom: 8px;
+  text-transform: uppercase;
+  font-size: 11px;
+  color: #666;
+}
+
+td {
+  padding: 12px 0;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.highlight {
+  color: #d12;
+  font-weight: 700;
+}
+
+ul {
+  padding-left: 18px;
+  margin-top: 10px;
+}
+
+li {
+  margin-bottom: 8px;
+}
+
+@media (max-width: 600px) {
+  .grid-row {
+    flex-direction: column;
+  }
+  .label {
+    margin-bottom: 15px;
+  }
+  .teaser-box {
+    flex-direction: column;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Statistically-Grounded Attention for Alzheimer's Detection</h1>
+
+  <div class="subtitle">
+    A Parameter-Free Approach to Multimodal Clinical Fusion
+  </div>
+
+  <div class="authors">
+    Harika Mahapatra, Dr. A. V. Sriharsha
+  </div>
+
+  <div class="venue">
+    IEEE Global AI Summit'25 · AIML-CEB @ AJCAI
+  </div>
+
+  <div class="links">
+    <a href="https://ieeexplore.ieee.org/document/11410801">Paper</a>
+    <span class="dot">·</span>
+    <a href="https://github.com/harikamahapatra/CV-Attention-for-AD-Detection">Code</a>
+    <span class="dot">·</span>
+    <a href="https://openreview.net/forum?id=HhC1OrmGtE">Poster</a>
+    <span class="dot">·</span>
+   
+  </div>
+</header>
+
+<div class="teaser-box">
+  <div class="flow-step">Input Modalities<br>(MRI, Cog, Bio)</div>
+  <div class="arrow">→</div>
+  <div class="flow-step" style="border-color: var(--barron-blue); color: var(--barron-blue);">
+    CV Reliability<br>Weighting (R)
+  </div>
+  <div class="arrow">→</div>
+  <div class="flow-step">Deterministic<br>Feature Fusion</div>
+  <div class="arrow">→</div>
+  <div class="flow-step">Alzheimer's<br>Diagnosis</div>
+</div>
+
+<div class="grid-row">
+  <div class="label">The Core Idea</div>
+  <div class="content">
+    Learned attention weights are often uninterpretable "black boxes." We replace them with a <strong>parameter-free mechanism</strong> grounded in data reliability. By weighting modalities based on their statistical stability—the <strong>Coefficient of Variation (CV)</strong>—we ensure that reliable clinical signals naturally guide the model's decision-making.
+  </div>
+</div>
+
+<div class="grid-row">
+  <div class="label">Approach</div>
+  <div class="content">
+    Traditional attention relies on optimization-heavy \( Softmax(QK^T) \). For high-stakes clinical fusion, we propose that importance should be proportional to <strong>statistical stability</strong>.
+
+    <div class="math-block">
+      \[
+      \alpha_i = \frac{R_i}{\sum R_j} \quad \text{where} \quad R = \frac{|\mu|}{\sigma + \epsilon}
+      \]
+    </div>
+
+    This relationship ensures that as a modality's relative variation decreases, its influence on the final diagnosis increases, making the model’s "trust" fully verifiable by a clinician.
+  </div>
+</div>
+
+<div class="grid-row">
+  <div class="label">Performance</div>
+  <div class="content">
+    <table>
+      <thead>
+        <tr>
+          <th>Architecture</th>
+          <th>Accuracy</th>
+          <th>AUC</th>
+          <th>Params</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>MAGF (Proposed)</strong></td>
+          <td><span class="highlight">89.7%</span></td>
+          <td><strong>0.92</strong></td>
+          <td><strong>2.1M</strong></td>
+        </tr>
+        <tr>
+          <td>Hybrid LSTM-FNN</td>
+          <td>87.3%</td>
+          <td>0.90</td>
+          <td>4.5M</td>
+        </tr>
+        <tr>
+          <td>Standard Multi-Head Attention</td>
+          <td>78.4%</td>
+          <td>0.79</td>
+          <td>6.8M</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>Ablation Study:</strong> Removing the statistical weighting leads to a <span class="highlight">34.1% performance drop</span>, confirming that the CV-grounded logic is the primary driver of accuracy.</p>
+  </div>
+</div>
+
+<div class="grid-row">
+  <div class="label">Implications</div>
+  <div class="content">
+    This work bridges the gap between <strong>heuristic-based ML</strong> and <strong>principled architectural design</strong>. By utilizing a deterministic statistical function in place of learned parameters, we achieved:
+    <ul>
+      <li><strong>Reduced Complexity:</strong> ~60% fewer parameters compared to standard Transformers.</li>
+      <li><strong>Inherent Trust:</strong> A fully interpretable fusion layer grounded in input statistics.</li>
+      <li><strong>Efficiency:</strong> Faster inference by removing heavy attention computations.</li>
+    </ul>
+  </div>
+</div>
+
+</body>
+</html>
