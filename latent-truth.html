@@ -121,6 +121,43 @@
       margin-bottom: 8px;
     }
 
+    /* NEW highlight block */
+
+    .highlight-block {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px;
+      margin: 35px 0;
+      background: #fafafa;
+    }
+
+    .highlight-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--bold);
+      margin-bottom: 10px;
+    }
+
+    .highlight-intro {
+      font-size: 15px;
+      margin-bottom: 12px;
+    }
+
+    .highlight-list {
+      padding-left: 18px;
+      margin-bottom: 12px;
+    }
+
+    .highlight-list li {
+      margin-bottom: 6px;
+    }
+
+    .highlight-conclusion {
+      font-size: 15px;
+    }
+
     @media (max-width: 600px) {
       .row {
         flex-direction: column;
@@ -164,7 +201,7 @@
 <div class="teaser">
   <img src="images/teaser.png">
   <div class="caption">
-    Activation steering as a causal intervention: models internally encode correct reasoning but fail during decoding. Steering aligns outputs with latent representations, recovering correct logical deductions without modifying model weights.
+    Activation steering as a causal intervention: models internally encode correct reasoning but fail during decoding.
   </div>
 </div>
 
@@ -172,10 +209,10 @@
   <div class="label">Key Results</div>
   <div class="content">
     <ul>
-      <li>Latent logical accuracy reaches ~100% in intermediate layers while behavioral accuracy plateaus at ~65%</li>
-      <li>Activation steering recovers up to <b>75% of logical failures</b> without degrading coherence</li>
-      <li>Random vector interventions yield 0% recovery, confirming <b>causal specificity</b></li>
-      <li>Findings generalize across architectures including <b>Mistral 7B</b></li>
+      <li>Latent accuracy ~100% vs behavioral ~65%</li>
+      <li>Steering recovers up to <b>75% of failures</b></li>
+      <li>Random controls show <b>0% recovery → causal effect</b></li>
+      <li>Generalizes across models including <b>Mistral 7B</b></li>
     </ul>
   </div>
 </div>
@@ -183,56 +220,55 @@
 <div class="row">
   <div class="label">Core Idea</div>
   <div class="content">
-    Large language models frequently contain correct reasoning internally but fail to express it during generation. This reveals a gap between what models know and what they produce. Rather than treating failures as missing knowledge, we analyze how reasoning is represented internally and where it breaks during decoding.
-  </div>
-</div>
-
-<div class="row">
-  <div class="label">Key Insight</div>
-  <div class="content">
-    Models encode logically correct structure in intermediate activations, but this structure is not faithfully reflected in final outputs. This suggests failures arise from the decoding process rather than representational limitations.
+    Models know the correct reasoning internally but fail to express it during decoding. We analyze where this breakdown occurs.
   </div>
 </div>
 
 <div class="row">
   <div class="label">Method</div>
   <div class="content">
-    We probe intermediate activations across layers to identify signals corresponding to correct reasoning. Using these signals, we apply activation steering during generation, introducing targeted perturbations in representation space.
+    We probe internal activations to identify reasoning signals and apply targeted perturbations during generation.
 
     <br><br>
 
-    This functions as a <b>causal intervention</b>, testing whether latent representations are not only present but functionally sufficient to drive correct outputs.
+    This acts as a <b>causal intervention</b>, testing whether latent representations are functionally sufficient.
 
     <br><br>
 
-    The approach operates entirely at inference time and requires no retraining or modification of model weights, providing a lightweight mechanism for improving reasoning reliability.
+    No retraining required — works at inference time.
   </div>
 </div>
 
-<div class="row">
-  <div class="label">Cross-Model Validation</div>
-  <div class="content">
+<!-- 🔥 NEW MISTRAL BLOCK -->
+
+<div class="highlight-block">
+  <div class="highlight-title">Cross-Model Validation (Mistral 7B)</div>
+
+  <p class="highlight-intro">
     We extend our analysis to <b>Mistral 7B</b> to test whether the knowledge–behavior gap is architecture-specific.
+  </p>
 
-    <ul>
-      <li>Intermediate representations achieve high logical accuracy across layers</li>
-      <li>Behavioral accuracy remains significantly lower, confirming the persistence of the gap</li>
-      <li>Activation steering improves performance with a clear optimal intervention range (α ≈ 1.0)</li>
-    </ul>
+  <ul class="highlight-list">
+    <li>Intermediate representations achieve <b>high logical accuracy</b> across layers</li>
+    <li>Behavior remains lower, confirming the persistence of the gap</li>
+    <li>Steering improves performance with optimal range (<b>α ≈ 1.0</b>)</li>
+  </ul>
 
-    These results demonstrate that reasoning failures are not due to missing knowledge, but arise during decoding — and can be consistently corrected via targeted interventions.
-  </div>
+  <p class="highlight-conclusion">
+    Reasoning failures arise during decoding — and can be 
+    <b>consistently corrected via causal interventions</b>.
+  </p>
 </div>
 
 <div class="row">
   <div class="label">Results</div>
   <div class="content">
-    Activation steering improves reasoning accuracy from ~65% to ~75% by recovering a large fraction of logical failures while preserving fluency and coherence. These findings indicate that model errors stem from misaligned decoding rather than insufficient knowledge, highlighting a new direction for improving reliability in language models.
+    Accuracy improves from ~65% → ~75% with steering while maintaining coherence, showing failures are due to decoding misalignment rather than missing knowledge.
   </div>
 </div>
 
 <div style="text-align:center; font-size:12px; color:#777; margin-top:25px;">
-  This project is ongoing. Results and write-up may evolve.
+  This project is ongoing. Results may evolve.
 </div>
 
 </body>
